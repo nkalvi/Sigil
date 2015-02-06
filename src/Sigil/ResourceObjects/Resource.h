@@ -58,7 +58,7 @@ public:
         CSSResourceType      = 1 <<  4, /**< Used for CSS resources (stylesheets). */
         ImageResourceType    = 1 <<  5, /**< Used for image resource, of all types. */
         SVGResourceType      = 1 <<  6, /**< Used for SVG image resources. */
-        FontResourceType     = 1 <<  7, /**< Used for font resources, both TTF and OTF. */
+        FontResourceType     = 1 <<  7, /**< Used for font resources, TTF, OTF and WOFF. */
         OPFResourceType      = 1 <<  8, /**< Used for the OPF document. */
         NCXResourceType      = 1 <<  9, /**< Used for the NCX table of contents. */
         MiscTextResourceType = 1 <<  10, /**< Used for editable text resource. */

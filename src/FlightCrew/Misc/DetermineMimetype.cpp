@@ -38,6 +38,7 @@ const std::string CSS_MIME     = "text/css";
 const std::string XML_MIME     = "application/xml"; // used for out-of-line xml islands
 const std::string XPGT_MIME    = "application/vnd.adobe-page-template+xml";
 const std::string OTF_MIME     = "application/vnd.ms-opentype";
+const std::string WOFF_MIME    = "application/font-woff";
 
 // For the "correct" truetype font mimetype, see this link
 // http://mx.gw.com/pipermail/file/2009/000400.html
@@ -90,12 +91,12 @@ std::string MimetypeFromExtension( const fs::path &filepath )
     }
 
     if ( extension == "png" )
-    
-        return PNG_MIME;    
+
+        return PNG_MIME;
 
     if ( extension == "gif" )
-    
-        return GIF_MIME;    
+
+        return GIF_MIME;
 
     if ( extension == "jpg" ||
          extension == "jpeg" )
@@ -104,25 +105,29 @@ std::string MimetypeFromExtension( const fs::path &filepath )
     }
 
     if ( extension == "css" )
-    
-        return CSS_MIME;    
+
+        return CSS_MIME;
 
     if ( extension == "ncx" )
-    
+
         return NCX_MIME;
-    
+
     if ( extension == "svg" )
-    
-        return SVG_MIME;    
+
+        return SVG_MIME;
 
     if ( extension == "otf" )
-    
+
         return OTF_MIME;
 
     if ( extension == "ttf" )
-    
-        return TTF_MIME; 
-        
+
+        return TTF_MIME;
+
+    if ( extension == "woff")
+
+        return WOFF_MIME;
+
     // We don't check for "xml" because
     // that's commonly used for several things.
 
@@ -138,16 +143,16 @@ bool HasHtmlFingerprint( const std::string &contents )
 
 bool HasDtbookFingerprint( const std::string &contents )
 {
-    return 
-        boost::contains( contents, DTBOOK_SYSTEM_ID ) || 
+    return
+        boost::contains( contents, DTBOOK_SYSTEM_ID ) ||
         boost::regex_search( contents, DTBOOK_TAG_REGEX );
 }
 
 
 bool HasNcxFingerprint( const std::string &contents )
 {
-    return 
-        boost::contains( contents, NCX_SYSTEM_ID ) || 
+    return
+        boost::contains( contents, NCX_SYSTEM_ID ) ||
         boost::regex_search( contents, NCX_TAG_REGEX );
 }
 
@@ -170,7 +175,7 @@ std::string GuessMimetypeFromFileContents( const fs::path &filepath )
     catch ( std::exception& )
     {
     	return UNKNOWN_MIME;
-    }    
+    }
 
     std::string contents_start = Util::GetFirstNumChars( contents, NUM_CHARS_FOR_FINGERPRINT );
 
@@ -197,11 +202,11 @@ std::string GuessMimetypeFromFileContents( const fs::path &filepath )
 std::string DetermineMimetype( const fs::path &filepath )
 {
     std::string mimetype = MimetypeFromExtension( filepath );
-    
+
     if ( mimetype != UNKNOWN_MIME )
 
         return mimetype;
-    
+
     return GuessMimetypeFromFileContents( filepath );
 }
 

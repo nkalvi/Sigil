@@ -1487,6 +1487,7 @@ void OPFResource::CreateMimetypes()
     m_Mimetypes[ "otf"   ] = "application/vnd.ms-opentype";
     m_Mimetypes[ "ttf"   ] = "application/x-font-ttf";
     m_Mimetypes[ "ttc"   ] = "application/x-font-truetype-collection";
+    m_Mimetypes[ "woff"  ] = "application/font-woff";
 }
 
 
