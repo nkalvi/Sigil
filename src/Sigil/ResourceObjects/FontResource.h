@@ -26,7 +26,7 @@
 #include "ResourceObjects/Resource.h"
 
 /**
- * Represents a font file on disk (TTF or OTF).
+ * Represents a font file on disk (TTF, OTF or WOFF).
  */
 class FontResource : public Resource
 {
